@@ -4,29 +4,31 @@
   "description": "",
   "main": "dist/index.js",
   "dependencies": {
+    "@types/bluebird": "^3.0.37",
+    "@types/lodash": "^4.14.54",
+    "@types/mongoose": "^4.7.7",
+    "@types/node": "^7.0.5",
     "babel-runtime": "^6.23.0",
-    "bluebird": "^3.4.7",
+    "bluebird": "^3.5.0",
     "circe": "^1.0.6",
     "lodash": "^4.17.4",
-    "mongoose": "^4.8.5"
+    "mongoose": "^4.8.6"
   },
   "devDependencies": {
-    "babel-cli": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.22.0",
     "chai": "^3.5.0",
-    "cross-env": "^3.1.4",
-    "eslint": "^3.16.1",
-    "eslint-config-standard": "^7.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^2.1.1",
+    "cross-env": "^3.2.3",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0",
     "nyc": "^10.1.2",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "ts-node": "^2.1.0",
+    "tslint": "^4.5.1",
+    "tslint-eslint-rules": "^3.4.0",
+    "typescript": "^2.2.1"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js"
+    "dev": "cross-env NODE_ENV=development nodemon --exec ts-node src/index.ts",
+    "build": "rm -rf dist && tsc"
   },
   "keywords": [],
   "author": "varharrie<varharrie@gmail.com>"

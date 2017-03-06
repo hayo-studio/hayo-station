@@ -1,0 +1,15 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules"
+  ],
+  "rules": {
+    "semicolon": [true, "never"],
+    "quotemark": [true,"single"],
+    "curly": false,
+    "no-console": [false],
+    "object-literal-sort-keys": false,
+    "ordered-imports": [false],
+    "trailing-comma": [false]
+  }
+}

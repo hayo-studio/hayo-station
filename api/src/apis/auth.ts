@@ -1,4 +1,4 @@
-const Circe = require('circe')
+import Circe from 'circe'
 const router = new Circe.Router()
 
 // 用户登录验证
@@ -11,8 +11,8 @@ router.post('/auth/login', Circe.checker({
   const user = await ctx.$models.User.find({username, password}).exec()
   if (!user) return ctx.fail('用户名不存在或密码错误')
 
-  const token = Circe.jwt.sign(_.pick(user, ['_id', 'name']), ctx.$config.app.secret)
+  const token = Circe.jwt.sign(ctx._.pick(user, ['_id', 'name']), ctx.$config.app.secret)
   ctx.success({token})
 })
 
-module.exports = router
+export default router

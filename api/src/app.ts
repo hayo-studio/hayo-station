@@ -1,11 +1,12 @@
-const path = require('path')
-global.Promise = require('bluebird')
+import * as path from 'path'
+import * as Bluebird from 'bluebird'
+import Circe from 'circe'
+import config from './config'
+import * as models from './models'
+import * as _ from 'lodash'
 
-const config = require('./config')
-const lodash = require('lodash')
-const models = require('./models')
+global.Promise = Bluebird
 
-const Circe = require('circe')
 const circe = new Circe()
 
 circe.use(Circe.onError((err, ctx) => {
@@ -25,15 +26,18 @@ circe.use(Circe.checker.onError((err, ctx) => ctx.fail(err.message)))
 circe.inject({
   $config: config,
   $models: models,
-  _: lodash
+  _
 })
 
 circe.route(path.resolve(__dirname, './apis'), {mount: '/v1'})
 
-module.exports = circe
-
-module.exports.run = function () {
-  circe.listen(config.app.port, function () {
+function run() {
+  circe.listen(config.app.port, () => {
     console.log(config.app.name + ' listening at ' + config.app.port)
   })
+}
+
+export {
+  circe,
+  run
 }

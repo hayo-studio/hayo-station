@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+import {Schema, model} from 'mongoose'
 const ObjectId = Schema.Types.ObjectId
 
 const HayoProfileSchema = new Schema({
@@ -10,4 +9,4 @@ const HayoProfileSchema = new Schema({
   isManagement: {type: Boolean, default: false}
 })
 
-module.exports = mongoose.model('HayoProfile', HayoProfileSchema)
+export default  model('HayoProfile', HayoProfileSchema)

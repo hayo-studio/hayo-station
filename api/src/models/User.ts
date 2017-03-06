@@ -1,5 +1,4 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+import {Schema, model} from 'mongoose'
 const ObjectId = Schema.Types.ObjectId
 
 const UserSchema = new Schema({
@@ -10,4 +9,4 @@ const UserSchema = new Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('User', UserSchema)
+export default model('User', UserSchema)
