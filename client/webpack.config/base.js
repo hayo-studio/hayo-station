@@ -10,7 +10,11 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.jsx?$/, use: ['babel-loader'], exclude: /node_modules/}
+      {test: /\.js$/, enforce: "pre", loader: "source-map-loader"},
+      {test: /\.tsx?$/, use: ['awesome-typescript-loader'], exclude: /node_modules/}
     ]
+  },
+  resolve: {
+    extensions: ["", ".ts", ".tsx", ".js"]
   }
 }
