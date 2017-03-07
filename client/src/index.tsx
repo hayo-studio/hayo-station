@@ -1,22 +1,22 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {AppContainer} from 'react-hot-loader'
-import App from './App'
+import Root from './Root'
 
-const render = (App: () => JSX.Element) => {
+const render = (Root: any) => {
   ReactDOM.render(
     <AppContainer>
-      <App />
+      <Root/>
     </AppContainer>,
     document.getElementById('app')
   )
 }
 
-render(App)
+render(Root)
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    const nextApp = require('./App').default
-    render(nextApp)
+  module.hot.accept('./Root', () => {
+    const nextRoot = require('./Root').default
+    render(nextRoot)
   })
 }
