@@ -11,7 +11,7 @@ module.exports = merge(baseConfig, {
     'react-hot-loader/patch',
     'webpack-dev-server/client',
     'webpack/hot/only-dev-server',
-    path.resolve(root, 'src/main.tsx')
+    path.resolve(root, 'src/index.tsx')
   ],
   devServer: {
     hot: true,
