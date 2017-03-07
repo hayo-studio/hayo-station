@@ -7,6 +7,9 @@
         "target": "es5",
         "jsx": "react"
     },
+    "files": [
+        "./declarations.d.ts"
+    ],
     "include": [
         "./src/**/*"
     ]
