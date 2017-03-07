@@ -11,7 +11,7 @@ module.exports = merge(baseConfig, {
     'react-hot-loader/patch',
     'webpack-dev-server/client',
     'webpack/hot/only-dev-server',
-    path.resolve(root, 'src/main.js')
+    path.resolve(root, 'src/main.tsx')
   ],
   devServer: {
     hot: true,
@@ -22,7 +22,6 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'React Demo',
       template: path.resolve(root, 'index.html')
     }),
     new webpack.HotModuleReplacementPlugin(),
