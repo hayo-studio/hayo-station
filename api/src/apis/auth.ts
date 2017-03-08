@@ -15,4 +15,10 @@ router.post('/auth/login', Circe.checker({
   ctx.success({token})
 })
 
+// 用户注册
+router.post('/auth/register', async (ctx) => {
+  ctx.redirect('/users')
+  ctx.status = 301
+})
+
 export default router
