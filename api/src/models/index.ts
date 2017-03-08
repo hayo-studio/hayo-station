@@ -12,5 +12,17 @@ mongoose.connection.on('err', (err) => {
 })
 
 export const ObjectId  = Types.ObjectId
+export {default as Album} from './Album'
+export {default as Article} from './Article'
+export {default as BBSProfile} from './BBSProfile'
+export {default as Collection} from './Collection'
+export {default as Comment} from './Comment'
+export {default as CommentPraise} from './CommentPraise'
+export {default as CommentReport} from './CommentReport'
+export {default as Entry} from './Entry'
+export {default as EntryPraise} from './EntryPraise'
+export {default as EntryReport} from './EntryReport'
+export {default as HAYOProfile} from './HAYOProfile'
+export {default as Photo} from './Photo'
+export {default as Share} from './Share'
 export {default as User} from './User'
-export {default as HayoProfile} from './HayoProfile'
