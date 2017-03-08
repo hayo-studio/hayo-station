@@ -15,7 +15,7 @@ export const ObjectId  = Types.ObjectId
 export {default as Album} from './Album'
 export {default as Article} from './Article'
 export {default as BBSProfile} from './BBSProfile'
-export {default as Collection} from './Collection'
+export {default as Favorite} from './Favorite'
 export {default as Comment} from './Comment'
 export {default as CommentPraise} from './CommentPraise'
 export {default as CommentReport} from './CommentReport'

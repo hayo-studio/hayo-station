@@ -1,7 +1,7 @@
 import {Schema, model} from 'mongoose'
 const ObjectId = Schema.Types.ObjectId
 
-const CollectionSchema = new Schema({
+const FavoriteSchema = new Schema({
   // 标题
   title: {type: String, trim: true, required: true},
   // 描述
@@ -14,4 +14,4 @@ const CollectionSchema = new Schema({
   timestamps: true
 })
 
-export default  model('Collection', CollectionSchema)
+export default  model('Favorite', FavoriteSchema)

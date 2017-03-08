@@ -22,7 +22,7 @@ const EntrySchema = new Schema({
   // 点赞
   praises: [{type: ObjectId, ref: 'EntryPraise'}],
   // 收藏集
-  collections: [{type: ObjectId, ref: 'Collection'}],
+  favorites: [{type: ObjectId, ref: 'Favorite'}],
   // 举报
   reports: [{type: ObjectId, ref: 'EntryReport'}]
 }, {

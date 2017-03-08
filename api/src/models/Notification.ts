@@ -16,7 +16,7 @@ const NotificationSchema = new Schema({
   // 评论点赞
   commentPraise: {type: ObjectId, ref: 'CommentPraise'},
   // 收藏
-  collection: {type: ObjectId, ref: 'Collection'}
+  favorite: {type: ObjectId, ref: 'Favorite'}
 }, {
   timestamps: true
 })
