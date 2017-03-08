@@ -1,7 +1,8 @@
 import {Schema, model} from 'mongoose'
-const ObjectId = Schema.Types.ObjectId
+import * as _ from 'lodash'
+import EntryReportTypes from './enums/EntryReportTypes'
 
-const entryReportTypes = ['Plagiarism', 'Violation', 'Other']
+const ObjectId = Schema.Types.ObjectId
 
 const EntryReportSchema = new Schema({
   // 举报人
@@ -9,7 +10,7 @@ const EntryReportSchema = new Schema({
   // 举报对象
   entry: {type: ObjectId, ref: 'Entry', required: true},
   // 类型
-  kind: {type: String, enum: entryReportTypes, required: true},
+  kind: {type: Number, enum: _.values(EntryReportTypes), required: true},
   // 描述
   desc: {type: String, trim: true}
 }, {

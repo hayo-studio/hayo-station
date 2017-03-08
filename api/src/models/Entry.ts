@@ -1,13 +1,14 @@
 import {Schema, model} from 'mongoose'
-const ObjectId = Schema.Types.ObjectId
+import * as _ from 'lodash'
+import EntryTypes from './enums/EntryTypes'
 
-const entryTypes = ['Share', 'Article', 'Album']
+const ObjectId = Schema.Types.ObjectId
 
 const EntrySchema = new Schema({
   // 发布者
   user: {type: ObjectId, ref: 'User', required: true},
   // 类型
-  kind: {type: String, default: 'Share', enum: entryTypes},
+  kind: {type: String, enum: _.values(EntryTypes), required: true},
   // 标题
   title: {type: String, required: true, trim: true},
   // 简述
