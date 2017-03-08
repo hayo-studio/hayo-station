@@ -6,6 +6,8 @@ const UserSchema = new Schema({
   username: {type: String, required: true, index: true},
   // 密码
   password: {type: String, required: true},
+  // 邮箱
+  email: {type: String, required: true},
   // 头像
   avatar: {type: ObjectId, ref: 'Photo'},
   // HAYO
