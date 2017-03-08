@@ -1,4 +1,5 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import extend from './extends/User'
 const ObjectId = Schema.Types.ObjectId
 
 const UserSchema = new Schema({
@@ -18,4 +19,17 @@ const UserSchema = new Schema({
   timestamps: true
 })
 
-export default model('User', UserSchema)
+extend(UserSchema)
+
+export interface IUser extends Document {
+  username: String,
+  password: String,
+  email: String,
+  avatar: Types.ObjectId
+}
+
+export interface IUserModel extends Model<IUser> {
+  register: () => any
+}
+
+export default model<IUser, IUserModel>('User', UserSchema)
