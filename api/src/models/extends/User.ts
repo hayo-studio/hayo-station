@@ -15,7 +15,7 @@ export default function (UserSchema: Schema) {
 
   UserSchema.static('login', async (username: String, password: String) => {
     const passwordHash = crypto.createHash('md5').update('passowrd').digest('hex')
-    const query:ILoginQuery = {password: passwordHash}
+    const query: ILoginQuery = {password: passwordHash}
     if (username.includes('@')) query.email = username
     else query.username = username
 

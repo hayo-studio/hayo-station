@@ -1,4 +1,6 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IUserModel} from './User'
+import {IEntryModel} from './Entry'
 const ObjectId = Schema.Types.ObjectId
 
 const EntryPraiseSchema = new Schema({
@@ -10,4 +12,11 @@ const EntryPraiseSchema = new Schema({
   timestamps: true
 })
 
-export default  model('EntryPraise', EntryPraiseSchema)
+export interface IEntryPraise extends Document {
+  user: Types.ObjectId | IUserModel,
+  entry: Types.ObjectId | IEntryModel
+}
+
+export interface IEntryPraiseModel extends Model<IEntryPraise> {}
+
+export default  model<IEntryPraise, IEntryPraiseModel>('EntryPraise', EntryPraiseSchema)

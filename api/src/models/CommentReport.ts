@@ -1,4 +1,7 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IUserModel} from './User'
+import {ICommentModel} from './Comment'
+
 const ObjectId = Schema.Types.ObjectId
 
 const CommentReportSchema = new Schema({
@@ -12,4 +15,11 @@ const CommentReportSchema = new Schema({
   timestamps: true
 })
 
-export default  model('CommentReport', CommentReportSchema)
+export interface ICommentReport extends Document {
+  user: Types.ObjectId | IUserModel,
+  comment: Types.ObjectId | ICommentModel
+}
+
+export interface ICommentReportModel extends Model<ICommentReport> {}
+
+export default  model<ICommentReport, ICommentReportModel>('CommentReport', CommentReportSchema)

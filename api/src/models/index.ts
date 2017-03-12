@@ -28,7 +28,4 @@ export {default as Photo} from './Photo'
 export {default as Share} from './Share'
 export {default as User} from './User'
 
-export {default as EntryReportTypes} from './enums/EntryReportTypes'
-export {default as EntryTypes} from './enums/EntryTypes'
-export {default as NotificationTypes} from './enums/NotificationTypes'
-export {default as PhotoTypes} from './enums/PhotoTypes'
+export * from './enums'

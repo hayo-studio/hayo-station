@@ -1,4 +1,6 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IAttachmentModel} from './Attachment'
+
 const ObjectId = Schema.Types.ObjectId
 
 const ArticleSchema = new Schema({
@@ -10,4 +12,11 @@ const ArticleSchema = new Schema({
   timestamps: true
 })
 
-export default  model('Article', ArticleSchema)
+export interface IArticle extends Document {
+  content: String,
+  attachements: Types.ObjectId[] | IAttachmentModel[]
+}
+
+export interface IArticleModel extends Model<IArticle> {}
+
+export default  model<IArticle, IArticleModel>('Article', ArticleSchema)

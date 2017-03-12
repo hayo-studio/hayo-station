@@ -1,4 +1,7 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IUserModel} from './User'
+import {ICommentModel} from './Comment'
+
 const ObjectId = Schema.Types.ObjectId
 
 const CommentPraiseSchema = new Schema({
@@ -10,4 +13,11 @@ const CommentPraiseSchema = new Schema({
   timestamps: true
 })
 
-export default  model('CommentPraise', CommentPraiseSchema)
+export interface ICommentPraise extends Document {
+  user: Types.ObjectId | IUserModel,
+  comment: Types.ObjectId | ICommentModel
+}
+
+export interface ICommentPraiseModel extends Model<ICommentPraise> {}
+
+export default  model<ICommentPraise, ICommentPraiseModel>('CommentPraise', CommentPraiseSchema)

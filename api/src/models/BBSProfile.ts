@@ -1,4 +1,5 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+
 const ObjectId = Schema.Types.ObjectId
 
 const BBSProfileSchema = new Schema({
@@ -14,4 +15,13 @@ const BBSProfileSchema = new Schema({
   timestamps: true
 })
 
-export default  model('BBSProfile', BBSProfileSchema)
+export interface IBBSProfile extends Document {
+  uid: String,
+  username: String,
+  avatar: String,
+  joinAt: Date
+}
+
+export interface IBBSProfileModel extends Model<IBBSProfile> {}
+
+export default  model<IBBSProfile, IBBSProfileModel>('BBSProfile', BBSProfileSchema)

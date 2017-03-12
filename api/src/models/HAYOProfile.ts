@@ -1,4 +1,4 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
 const ObjectId = Schema.Types.ObjectId
 
 const HAYOProfileSchema = new Schema({
@@ -16,4 +16,14 @@ const HAYOProfileSchema = new Schema({
   timestamps: true
 })
 
-export default  model('HAYOProfile', HAYOProfileSchema)
+export interface IHAYOProfile extends Document {
+  officialEvaluation: String,
+  selEvaluation: String,
+  joinAt: Date,
+  excellent: Boolean,
+  isManagement: Boolean
+}
+
+export interface IHAYOProfileModel extends Model<IHAYOProfile> {}
+
+export default  model<IHAYOProfile, IHAYOProfileModel>('HAYOProfile', HAYOProfileSchema)

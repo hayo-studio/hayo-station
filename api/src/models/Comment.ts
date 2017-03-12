@@ -1,4 +1,9 @@
-import {Schema, model} from 'mongoose'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IEntryModel} from './Entry'
+import {IUserModel} from './User'
+import {ICommentPraiseModel} from './CommentPraise'
+import {ICommentReportModel} from './CommentReport'
+
 const ObjectId = Schema.Types.ObjectId
 
 const CommentSchema = new Schema({
@@ -18,4 +23,15 @@ const CommentSchema = new Schema({
   timestamps: true
 })
 
-export default  model('Comment', CommentSchema)
+export interface IComment extends Document {
+  entry: Types.ObjectId | IEntryModel,
+  user: Types.ObjectId | IUserModel,
+  content: String,
+  mentions: Types.ObjectId[] | IUserModel[],
+  praises: Types.ObjectId[] | ICommentPraiseModel,
+  reports: Types.ObjectId[] | ICommentReportModel
+}
+
+export interface ICommentModel extends Model<IComment> {}
+
+export default  model<IComment, ICommentModel>('Comment', CommentSchema)

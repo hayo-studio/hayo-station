@@ -1,6 +1,11 @@
-import {Schema, model} from 'mongoose'
-import * as _ from 'lodash'
-import EntryTypes from './enums/EntryTypes'
+import {Document, Model, Schema, Types, model} from 'mongoose'
+import {EntryTypes, getNames} from './enums'
+import {IUserModel} from './User'
+import {ITagModel} from './Tag'
+import {ICommentModel} from './Comment'
+import {IEntryPraiseModel} from './EntryPraise'
+import {IFavoriteModel} from './Favorite'
+import {IEntryReportModel} from './EntryReport'
 
 const ObjectId = Schema.Types.ObjectId
 
@@ -8,7 +13,7 @@ const EntrySchema = new Schema({
   // 发布者
   user: {type: ObjectId, ref: 'User', required: true},
   // 类型
-  kind: {type: String, enum: _.values(EntryTypes), required: true},
+  kind: {type: String, enum: getNames(EntryTypes), required: true},
   // 标题
   title: {type: String, required: true, trim: true},
   // 简述
@@ -29,4 +34,19 @@ const EntrySchema = new Schema({
   timestamps: true
 })
 
-export default  model('Entry', EntrySchema)
+export interface IEntry extends Document {
+  user: Types.ObjectId | IUserModel,
+  kind: EntryTypes,
+  title: String,
+  desc: String,
+  detail: Types.ObjectId,
+  tags: Types.ObjectId[] | ITagModel[],
+  comments: Types.ObjectId[] | ICommentModel[],
+  praises: Types.ObjectId[] | IEntryPraiseModel[],
+  favorites: Types.ObjectId[] | IFavoriteModel[],
+  reports: Types.ObjectId[] | IEntryReportModel[]
+}
+
+export interface IEntryModel extends Model<IEntry> {}
+
+export default  model<IEntry, IEntryModel>('Entry', EntrySchema)
