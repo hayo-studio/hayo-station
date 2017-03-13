@@ -29,7 +29,7 @@ export interface IUser extends Document {
 }
 
 export interface IUserModel extends Model<IUser> {
-  register: () => any
+  register: (username: string, password: string, email: string) => IUser
 }
 
 export default model<IUser, IUserModel>('User', UserSchema)
