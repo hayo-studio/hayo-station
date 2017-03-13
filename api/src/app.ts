@@ -1,6 +1,6 @@
 import * as path from 'path'
 import * as Bluebird from 'bluebird'
-import Circe from 'circe'
+import * as Circe from 'circe'
 import config from './config'
 import * as models from './models'
 import * as _ from 'lodash'
@@ -21,7 +21,7 @@ circe.use(Circe.logger())
 circe.use(Circe.jwt({secret: config.app.secret}).unless({path: config.app.whitelist}))
 circe.use(Circe.bodyParser())
 circe.use(Circe.checker.init())
-circe.use(Circe.checker.onError((err, ctx) => ctx.fail(err.message)))
+circe.use(Circe.checker.onError((err, ctx: IContext) => ctx.fail(err.message)))
 
 circe.inject({
   $config: config,

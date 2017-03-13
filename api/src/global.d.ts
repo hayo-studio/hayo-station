@@ -1,15 +1,9 @@
 import * as models from './models'
 import * as lodash from 'lodash'
-
-interface ICirceContext {
-  status: Number | String,
-  success: (data: any) => void,
-  fail: (data:any) => void,
-  redirect: (url: String) => void
-}
+import * as Circe from 'circe'
 
 declare global {
-  interface IContext extends ICirceContext{
+  interface IContext extends Circe.IContext{
     vals: any,
     $config: any,
     $models: typeof models,

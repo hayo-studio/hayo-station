@@ -1,4 +1,4 @@
-import Circe from 'circe'
+import * as Circe from 'circe'
 const router = new Circe.Router()
 
 // 用户登录验证
