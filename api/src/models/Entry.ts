@@ -1,11 +1,11 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
 import {EntryTypes, getNames} from './enums'
-import {IUserModel} from './User'
-import {ITagModel} from './Tag'
-import {ICommentModel} from './Comment'
-import {IEntryPraiseModel} from './EntryPraise'
-import {IFavoriteModel} from './Favorite'
-import {IEntryReportModel} from './EntryReport'
+import {IUser} from './User'
+import {ITag} from './Tag'
+import {IComment} from './Comment'
+import {IEntryPraise} from './EntryPraise'
+import {IFavorite} from './Favorite'
+import {IEntryReport} from './EntryReport'
 
 const ObjectId = Schema.Types.ObjectId
 
@@ -35,16 +35,16 @@ const EntrySchema = new Schema({
 })
 
 export interface IEntry extends Document {
-  user: Types.ObjectId | IUserModel,
+  user: Types.ObjectId | IUser,
   kind: EntryTypes,
   title: String,
   desc: String,
   detail: Types.ObjectId,
-  tags: Types.ObjectId[] | ITagModel[],
-  comments: Types.ObjectId[] | ICommentModel[],
-  praises: Types.ObjectId[] | IEntryPraiseModel[],
-  favorites: Types.ObjectId[] | IFavoriteModel[],
-  reports: Types.ObjectId[] | IEntryReportModel[]
+  tags: Types.ObjectId[] | ITag[],
+  comments: Types.ObjectId[] | IComment[],
+  praises: Types.ObjectId[] | IEntryPraise[],
+  favorites: Types.ObjectId[] | IFavorite[],
+  reports: Types.ObjectId[] | IEntryReport[]
 }
 
 export interface IEntryModel extends Model<IEntry> {}

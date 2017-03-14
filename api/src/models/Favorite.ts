@@ -1,6 +1,6 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
-import {IUserModel} from './User'
-import {IEntryModel} from './Entry'
+import {IUser} from './User'
+import {IEntry} from './Entry'
 const ObjectId = Schema.Types.ObjectId
 
 const FavoriteSchema = new Schema({
@@ -19,8 +19,8 @@ const FavoriteSchema = new Schema({
 export interface IFavorite extends Document {
   title: String,
   desc: String,
-  user: Types.ObjectId | IUserModel,
-  entries: Types.ObjectId[] | IEntryModel[]
+  user: Types.ObjectId | IUser,
+  entries: Types.ObjectId[] | IEntry[]
 }
 
 export interface IFavoriteModel extends Model<IFavorite> {}

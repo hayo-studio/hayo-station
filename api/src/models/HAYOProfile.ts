@@ -1,7 +1,10 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
+import {IUser} from './User'
 const ObjectId = Schema.Types.ObjectId
 
 const HAYOProfileSchema = new Schema({
+  // 用户
+  user: {type: ObjectId, ref: 'User', required: true},
   // 官方评价（职称）
   officialEvaluation: {type: String, default: '成员'},
   // 个人评价
@@ -15,6 +18,7 @@ const HAYOProfileSchema = new Schema({
 })
 
 export interface IHAYOProfile extends Document {
+  user: Types.ObjectId | IUser,
   officialEvaluation: String,
   selEvaluation: String,
   joinAt: Date,

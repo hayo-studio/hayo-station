@@ -1,8 +1,8 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
 import extend from './extends/User'
-import {IHAYOProfileModel} from './HAYOProfile'
-import {IBBSProfileModel} from './BBSProfile'
-import {IPhotoModel} from './Photo'
+import {IHAYOProfile} from './HAYOProfile'
+import {IBBSProfile} from './BBSProfile'
+import {IPhoto} from './Photo'
 const ObjectId = Schema.Types.ObjectId
 
 const UserSchema = new Schema({
@@ -30,10 +30,10 @@ export interface IUser extends Document {
   username: String,
   password: String,
   email: String,
-  avatar: Types.ObjectId | IPhotoModel
+  avatar: Types.ObjectId | IPhoto
   isAdmin: Boolean,
-  haypProfile: Types.ObjectId | IHAYOProfileModel,
-  bbsProfile: Types.ObjectId | IBBSProfileModel
+  haypProfile: Types.ObjectId | IHAYOProfile,
+  bbsProfile: Types.ObjectId | IBBSProfile
 }
 
 export interface IUserModel extends Model<IUser> {

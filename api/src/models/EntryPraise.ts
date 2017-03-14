@@ -1,6 +1,6 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
-import {IUserModel} from './User'
-import {IEntryModel} from './Entry'
+import {IUser} from './User'
+import {IEntry} from './Entry'
 const ObjectId = Schema.Types.ObjectId
 
 const EntryPraiseSchema = new Schema({
@@ -13,8 +13,8 @@ const EntryPraiseSchema = new Schema({
 })
 
 export interface IEntryPraise extends Document {
-  user: Types.ObjectId | IUserModel,
-  entry: Types.ObjectId | IEntryModel
+  user: Types.ObjectId | IUser,
+  entry: Types.ObjectId | IEntry
 }
 
 export interface IEntryPraiseModel extends Model<IEntryPraise> {}

@@ -1,9 +1,12 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
-import {IPhotoModel} from './Photo'
+import {IPhoto} from './Photo'
+import {IEntry} from './Entry'
 
 const ObjectId = Schema.Types.ObjectId
 
 const AlbumSchema = new Schema({
+  // 对象
+  entry: {type: ObjectId, ref: 'Entry', required: true},
   // 图片
   photos: [{type: ObjectId, ref: 'Photo'}]
 }, {
@@ -11,7 +14,8 @@ const AlbumSchema = new Schema({
 })
 
 export interface IAlbum extends Document {
-  photos: Types.ObjectId[] | IPhotoModel[]
+  entry: Types.ObjectId | IEntry,
+  photos: Types.ObjectId[] | IPhoto[]
 }
 
 export interface IAlbumModel extends Model<IAlbum> {}

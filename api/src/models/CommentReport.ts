@@ -1,6 +1,6 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
-import {IUserModel} from './User'
-import {ICommentModel} from './Comment'
+import {IUser} from './User'
+import {IComment} from './Comment'
 
 const ObjectId = Schema.Types.ObjectId
 
@@ -16,8 +16,8 @@ const CommentReportSchema = new Schema({
 })
 
 export interface ICommentReport extends Document {
-  user: Types.ObjectId | IUserModel,
-  comment: Types.ObjectId | ICommentModel
+  user: Types.ObjectId | IUser,
+  comment: Types.ObjectId | IComment
 }
 
 export interface ICommentReportModel extends Model<ICommentReport> {}

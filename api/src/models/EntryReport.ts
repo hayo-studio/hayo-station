@@ -1,7 +1,7 @@
 import {Document, Model, Schema, Types, model} from 'mongoose'
 import {EntryReportTypes, getNames} from './enums'
-import {IUserModel} from './User'
-import {IEntryModel} from './Entry'
+import {IUser} from './User'
+import {IEntry} from './Entry'
 
 const ObjectId = Schema.Types.ObjectId
 
@@ -19,8 +19,8 @@ const EntryReportSchema = new Schema({
 })
 
 export interface IEntryReport extends Document {
-  user: Types.ObjectId | IUserModel,
-  entry: Types.ObjectId | IEntryModel,
+  user: Types.ObjectId | IUser,
+  entry: Types.ObjectId | IEntry,
   kind: EntryReportTypes,
   desc: String
 }
