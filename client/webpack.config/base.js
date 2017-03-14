@@ -10,8 +10,49 @@ module.exports = {
   },
   module: {
     rules: [
-      {test: /\.js$/, enforce: "pre", loader: "source-map-loader"},
-      {test: /\.tsx?$/, use: ['react-hot-loader/webpack', 'awesome-typescript-loader'], exclude: /node_modules/, include: path.resolve(root, 'src')}
+      {
+        test: /\.js$/,
+        enforce: "pre",
+        use: ["source-map-loader"]
+      },
+      {
+        test: /\.tsx?$/,
+        include: path.resolve(root, 'src'),
+        exclude: /node_modules/,
+        use: ['react-hot-loader/webpack', 'awesome-typescript-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+                modules: true,
+                importLoaders: 1,
+                camelCase: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          } // , {loader: 'postcss-loader'}
+        ]
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          {loader: 'style-loader'},
+          {
+            loader: 'css-loader',
+            options: {
+                modules: true,
+                importLoaders: 1,
+                camelCase: true,
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          // {loader: 'postcss-loader'},
+          {loader: 'stylus-loader'}
+        ]
+      }
     ]
   },
   resolve: {
