@@ -9,9 +9,7 @@ const HAYOProfileSchema = new Schema({
   // 加入时间
   joinAt: {type: Date, default: Date.now},
   // 是否优秀
-  excellent: {type: Boolean, default: false},
-  // 是否管理层
-  isManagement: {type: Boolean, default: false}
+  excellent: {type: Boolean, default: false}
 }, {
   timestamps: true
 })
@@ -20,8 +18,7 @@ export interface IHAYOProfile extends Document {
   officialEvaluation: String,
   selEvaluation: String,
   joinAt: Date,
-  excellent: Boolean,
-  isManagement: Boolean
+  excellent: Boolean
 }
 
 export interface IHAYOProfileModel extends Model<IHAYOProfile> {}
