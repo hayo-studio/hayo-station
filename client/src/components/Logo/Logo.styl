@@ -1,0 +1,35 @@
+$blue = #aaa
+@keyframes logo-breathing
+  0%
+    transform: scale(1)
+    stroke: rgba(255, 255, 255, .2)
+  50%
+    transform: scale(.85)
+    stroke: $blue
+  100%
+    transform: scale(1)
+    stroke: rgba(255, 255, 255, .2)
+
+@keyframes logo-loading
+  0%
+    stroke: $blue
+    stroke-dashoffset: 0px
+  100%
+    stroke: $blue
+    stroke-dashoffset: 1370px
+
+.root
+  font-size: 48px
+  size: 1em 1em
+.breathing .hexagon
+  animation: logo-breathing 5s infinite
+.loading .hexagon
+  stroke-dasharray: 360px 360px
+  stroke-dashoffset: 0px
+  stroke-width: 30px
+  animation: logo-loading 1s infinite linear
+.hexagon
+  display: block
+  fill: transparent
+  stroke-miterlimit: 10
+  stroke-width: 30px
