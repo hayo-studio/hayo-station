@@ -12,6 +12,9 @@
     "object-literal-sort-keys": false,
     "ordered-imports": [false],
     "trailing-comma": [false],
-    "member-access": [false]
+    "member-access": [false],
+    "max-line-length": [false],
+    "jsx-alignment": [false],
+    "jsx-no-multiline-js": [false]
   }
 }
