@@ -15,6 +15,9 @@
     "member-access": [false],
     "max-line-length": [false],
     "jsx-alignment": [false],
-    "jsx-no-multiline-js": [false]
+    "jsx-no-multiline-js": [false],
+    "max-classes-per-file": [false],
+    "only-arrow-functions": [false],
+    "member-ordering": [false]
   }
 }
